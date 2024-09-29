@@ -34,4 +34,6 @@ gtest_discover_tests(runUnitTests)
 add_test(runUnitTests runUnitTests)
 
 
-
+find_package(benchmark REQUIRED)
+add_executable(runBenchmark src/add.b.cpp src/add.cpp)
+target_link_libraries(runBenchmark benchmark::benchmark Threads::Threads)
