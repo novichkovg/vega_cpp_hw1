@@ -38,8 +38,9 @@ FetchContent_GetProperties(googletest)
 
 
 enable_testing()
-find_package(GTest REQUIRED)
+
 include(GoogleTest)
+# find_package(GTest REQUIRED)
 
 add_executable(runUnitTests src/add.t.cpp src/add.cpp)
 target_link_libraries(runUnitTests gtest gtest_main Threads::Threads)
