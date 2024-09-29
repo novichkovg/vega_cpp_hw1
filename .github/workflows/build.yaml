@@ -10,3 +10,4 @@ jobs:
       - run: ./build/main
       - run: ./build/runUnitTests
       - run: ./build/runBenchmark
+
