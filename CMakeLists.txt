@@ -14,13 +14,31 @@ include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 #add_executable(hw1 ${SRC_FILES})
 # ====================================================================   
 
+################################
+# Application
 add_executable(main src/main.cpp src/add.cpp)
 
 ################################
 # Google Test
+
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
-# target_link_libraries(my_app PRIVATE Threads::Threads)
+
+FetchContent_Declare (
+    googletest
+    GIT_REPOSITORY https://github.com/google/googletest.git
+    GIT_TAG v1.15.2
+)
+
+FetchContent_MakeAvailable(googletest)
+
+FetchContent_Declare(
+  benchmark
+  GIT_REPOSITORY https://github.com/google/benchmark.git
+  GIT_TAG v1.9.0)
+
+FetchContent_MakeAvailable(benchmark)
+FetchContent_GetProperties(benchmark)
 
 enable_testing()
 find_package(GTest REQUIRED)
