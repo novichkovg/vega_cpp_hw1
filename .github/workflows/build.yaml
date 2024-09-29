@@ -11,8 +11,8 @@ jobs:
         with:
           name: binaries
           path: 
-            ./build/main
-            ./build/runUnitTests
+            build/main
+            build/runUnitTests
 
   tests:
     needs: build
