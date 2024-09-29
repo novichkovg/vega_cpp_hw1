@@ -1,8 +1,8 @@
+///
+/// This is a Google test int add(int, int) function
+///
 #include "add.h"
 #include <iostream>
-//#include <gtest/gtest.h>
-
-
 
 void usage(char * myname) {
 	std::cout << "Usage: ./"<<myname<< " <number 1> <number 2>" << std::endl;

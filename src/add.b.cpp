@@ -1,3 +1,6 @@
+///
+/// This is a benchmarking function
+///
 #include <benchmark/benchmark.h>
 #include "add.h"
 

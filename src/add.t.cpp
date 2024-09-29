@@ -1,5 +1,9 @@
-#include <gtest/gtest.h>
+///
+/// This is a Google test int add(int, int) function
+///
+
 #include "add.h"
+#include <gtest/gtest.h>
 
 TEST(Test, Simple) {
 	EXPECT_EQ(add(2,4), 6);
