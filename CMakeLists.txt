@@ -34,6 +34,18 @@ FetchContent_Declare (
 )
 
 FetchContent_MakeAvailable(googletest)
+FetchContent_GetProperties(googletest)
+
+
+enable_testing()
+find_package(GTest REQUIRED)
+include(GoogleTest)
+
+add_executable(runUnitTests src/add.t.cpp src/add.cpp)
+target_link_libraries(runUnitTests gtest gtest_main Threads::Threads)
+gtest_discover_tests(runUnitTests)
+add_test(runUnitTests runUnitTests)
+
 
 FetchContent_Declare(
   benchmark
@@ -42,18 +54,6 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(benchmark)
 FetchContent_GetProperties(benchmark)
-
-enable_testing()
-find_package(GTest REQUIRED)
-include(GoogleTest)
-
-add_executable(runUnitTests src/add.t.cpp src/add.cpp)
-
-target_link_libraries(runUnitTests gtest gtest_main Threads::Threads)
-gtest_discover_tests(runUnitTests)
-
-add_test(runUnitTests runUnitTests)
-
 
 find_package(benchmark REQUIRED)
 add_executable(runBenchmark src/add.b.cpp src/add.cpp)
