@@ -36,7 +36,6 @@ FetchContent_Declare (
 FetchContent_MakeAvailable(googletest)
 FetchContent_GetProperties(googletest)
 
-
 enable_testing()
 
 include(GoogleTest)
@@ -51,11 +50,14 @@ add_test(runUnitTests runUnitTests)
 FetchContent_Declare(
   benchmark
   GIT_REPOSITORY https://github.com/google/benchmark.git
-  GIT_TAG v1.9.0)
+  GIT_TAG v1.9.0
+)
 
 FetchContent_MakeAvailable(benchmark)
 FetchContent_GetProperties(benchmark)
 
-find_package(benchmark REQUIRED)
+# find_package(benchmark REQUIRED)
+
+include(benchmark)
 add_executable(runBenchmark src/add.b.cpp src/add.cpp)
 target_link_libraries(runBenchmark benchmark::benchmark Threads::Threads)
