@@ -1,7 +1,7 @@
 name: build_and_run
 on: [push]
 jobs:
-  build_and_run:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -14,21 +14,21 @@ jobs:
             ./build/main
             ./build/runUnitTests
 
-    tests:
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/download-artifact@v4
-          with:
-            name: binaries
-        - run: chmod +x runUnitTests && ./runUnitTests
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: binaries
+      - run: chmod +x runUnitTests && ./runUnitTests
 
-    run:
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/download-artifact@v4
-          with:
-            name: binaries
-        - run: chmod +x main && ./main
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: binaries
+      - run: chmod +x main && ./main
 
 #      - run: ./build/main 2 4
 #      - run: ./build/runUnitTests
