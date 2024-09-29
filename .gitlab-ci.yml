@@ -1,0 +1,11 @@
+name: build_and_run
+on: [push]
+jobs:
+  build_and_run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y cmake
+      - run: mkdir -p build && cmake -B build -S . && cmake --build build
+      - run: ./build/hw1
+
