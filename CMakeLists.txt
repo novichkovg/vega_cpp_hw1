@@ -21,8 +21,11 @@ add_executable(main src/main.cpp src/add.cpp)
 ################################
 # Google Test
 
+include(FetchContent)
+
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
+
 
 FetchContent_Declare (
     googletest
