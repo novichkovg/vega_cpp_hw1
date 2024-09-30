@@ -11,9 +11,10 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: binaries
-          path: 
+          path:|
             build/main
             build/runUnitTests
+            build/runBenchmark
 
   tests:
     needs: build
@@ -32,3 +33,12 @@ jobs:
         with:
           name: binaries
       - run: chmod +x main && ./main
+
+  benchmarks:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: binaries
+      - run: chmod +x runBenchmark && ./runBenchmark
